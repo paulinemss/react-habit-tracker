@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Title from './components/Title'
 import Calendar from './components/Calendar'
 
 const habits = [{
@@ -67,7 +68,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <Calendar habits={habits} dates={this.state.dates} toggleHabit={this.toggleHabit} />
+      <>
+        <Title />
+        <Calendar 
+          habits={habits} 
+          dates={this.state.dates} 
+          toggleHabit={this.toggleHabit} 
+        />
+      </>
     )
   }
 }

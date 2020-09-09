@@ -5,6 +5,14 @@ body {
   font-family: 'Open Sans';
 }
 
+.title {
+  font-size: 30px; 
+  margin-top: 40px;
+  margin-left: 40px; 
+  font-weight: 600; 
+  color: #262c33;
+}
+
 .list-habits {
   margin: 40px;
   padding: 0;
@@ -16,8 +24,24 @@ body {
   margin-top: 20px; 
 }
 
-.row li {
-  width: 150px; 
+.week-days {
+  margin-left: 150px; 
+  color: #83868a; 
+}
+
+.week-days li {
+  width: 100px; 
+}
+
+.calendar-habit {
+  display: flex; 
+  align-items: center;
+  width: 150px;
+}
+
+.icon-habit {
+  margin-right: 10px; 
+  font-size: 20px; 
 }
 
 .calendar-box {
