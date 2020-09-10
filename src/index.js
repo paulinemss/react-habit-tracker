@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Title from './components/Title'
+import HabitForm from './components/HabitForm'
 import Calendar from './components/Calendar'
 
 const habits = [{
@@ -70,6 +71,7 @@ class App extends React.Component {
     return (
       <>
         <Title />
+        <HabitForm />
         <Calendar 
           habits={habits} 
           dates={this.state.dates} 

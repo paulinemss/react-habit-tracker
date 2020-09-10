@@ -13,8 +13,28 @@ body {
   color: #262c33;
 }
 
+.add-habit {
+  margin-top: 20px; 
+  margin-left: 40px; 
+}
+
+.add-habit button {
+  font-family: 'Open Sans';
+  cursor: pointer;
+  color: #017cff; 
+  border: 2px solid #edf2fa;
+  background: none; 
+  border-radius: 30px; 
+  font-weight: 700; 
+  padding: 8px 10px; 
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  width: 140px; 
+}
+
 .list-habits {
-  margin: 40px;
+  margin-left: 40px;
   padding: 0;
   list-style-type: none;
 }
@@ -49,7 +69,6 @@ body {
 }
 
 .btn {
-  outline: none;
   border: none; 
   cursor: pointer;
   width: 30px;

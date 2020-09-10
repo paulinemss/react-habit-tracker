@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCircle, FaTimes } from "react-icons/fa";
+import { FaCircle, FaTimes } from 'react-icons/fa';
 
 export default class Calendar extends React.Component {
   render () {
