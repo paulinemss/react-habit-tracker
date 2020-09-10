@@ -18,7 +18,7 @@ body {
   margin-left: 40px; 
 }
 
-.add-habit button {
+.add-habit-btn {
   font-family: 'Open Sans';
   cursor: pointer;
   color: #017cff; 
@@ -31,6 +31,15 @@ body {
   align-items: center;
   justify-content: center; 
   width: 140px; 
+  outline: none; 
+}
+
+.add-habit-btn:focus {
+  border-color: #017cff; 
+}
+
+.add-habit-btn:hover {
+  border-color: #017cff; 
 }
 
 .list-habits {
@@ -68,10 +77,16 @@ body {
   width: 100px; 
 }
 
-.btn {
+.calendar-btn {
   border: none; 
   cursor: pointer;
   width: 30px;
   height: 30px; 
   border-radius: 5px; 
+  transition: all 1s;
+  outline: none; 
+}
+
+.calendar-btn:focus {
+  transform: scale(1.2);
 }
