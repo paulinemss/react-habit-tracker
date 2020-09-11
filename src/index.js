@@ -39,7 +39,12 @@ class App extends React.Component {
       }
     }
 
+    this.addHabit = this.addHabit.bind(this)
     this.toggleHabit = this.toggleHabit.bind(this)
+  }
+
+  addHabit () {
+
   }
 
   toggleHabit (habit, date) {

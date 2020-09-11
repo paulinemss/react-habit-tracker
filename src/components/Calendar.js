@@ -7,10 +7,12 @@ export default class Calendar extends React.Component {
 
     this.renderDateFormat = this.renderDateFormat.bind(this)
   }
+  
   renderDateFormat (isoDate) {
     const date = new Date(isoDate)
     return date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear()
   }
+
   render () {
     const { habits, dates, toggleHabit } = this.props
     const dateList = Object.keys(dates)

@@ -5,6 +5,10 @@ body {
   font-family: 'Open Sans';
 }
 
+h4 {
+  margin: 0; 
+}
+
 .title {
   font-size: 30px; 
   margin-top: 40px;
@@ -13,7 +17,7 @@ body {
   color: #262c33;
 }
 
-.add-habit {
+.add-habit-main {
   margin-top: 20px; 
   margin-left: 40px; 
 }
@@ -40,6 +44,44 @@ body {
 
 .add-habit-btn:hover {
   border-color: #017cff; 
+}
+
+.close-habit-btn {
+  cursor: pointer;
+  padding: 5px; 
+  display: flex; 
+  align-items: center;
+  background: none;
+  border-radius: 50%; 
+  color: #83868a; 
+  border: none;
+  outline: none; 
+  font-size: 18px; 
+}
+
+.close-habit-btn:focus {
+  background-color: #edf2fa;
+}
+
+.close-habit-btn:hover {
+  background-color: #edf2fa;
+}
+
+.add-habit-form {
+  display: flex; 
+  flex-direction: column;
+  padding: 20px; 
+  margin-top: -20px; 
+}
+
+.form-label {
+  display: flex; 
+  flex-direction: column;
+  margin-top: 20px; 
+}
+
+.form-label input {
+  margin-top: 10px; 
 }
 
 .list-habits {
