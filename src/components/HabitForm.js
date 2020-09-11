@@ -20,12 +20,18 @@ export default class HabitForm extends React.Component {
 
     this.state = {
       showModal: false,
-      typeOfHabit: 'keep it'
+      valueHabit: '',
+      colorPicker: '#fff',
+      typeOfHabit: 'keep it',
+      isPositive: true
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this)
     this.handleCloseModal = this.handleCloseModal.bind(this)
     this.toggleTypeOfHabit = this.toggleTypeOfHabit.bind(this)
+    this.handleChangeColor = this.handleChangeColor.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleOpenModal () {
@@ -35,16 +41,42 @@ export default class HabitForm extends React.Component {
   handleCloseModal () {
     this.setState({ showModal: false })
   }
+
+  handleChangeColor (color) {
+    this.setState({ colorPicker: color.hex })
+  }
   
+  handleChange (event) {
+    this.setState({ valueHabit: event.target.value })
+  }
+
+  handleSubmit (event) {
+    event.preventDefault()
+    this.setState({ showModal: false })
+    const habit = {
+      title: this.state.valueHabit,
+      color: this.state.colorPicker,
+      isPositive: this.state.isPositive
+    } 
+    this.props.addHabit(habit)
+  }
+
   toggleTypeOfHabit () {
     this.state.typeOfHabit === 'keep it' 
-      ? this.setState({ typeOfHabit: 'lose it' })
-      : this.setState({ typeOfHabit: 'keep it' })
+      ? this.setState({ 
+        typeOfHabit: 'lose it',
+        isPositive: false 
+        })
+      : this.setState({ 
+        typeOfHabit: 'keep it',
+        isPositive: true 
+        })
   }
 
   render () {
     return (
       <>
+
         <div className='add-habit-main'>
           <button 
             aria-label='Add new habit to the calendar'
@@ -57,30 +89,43 @@ export default class HabitForm extends React.Component {
             Add Habit
           </button>
         </div>
+
         <ReactModal isOpen={this.state.showModal} style={customStyles}>
           <div className='add-habit-modal'>
-            <button className='close-habit-btn' onClick={this.handleCloseModal}><GoX /></button>
-            <form className='add-habit-form'>
+            <button className='close-habit-btn' onClick={this.handleCloseModal}>
+              <GoX />
+            </button>
+            <form className='add-habit-form' onSubmit={this.handleSubmit}>
               <label className='form-label'>
-                <h4>Habit name:</h4>
+                <h4>Habit:</h4>
                 <span className='form-text'>maximum 30 characters</span>
-                <input type="text" name="habit" />
+                <input 
+                  type="text" 
+                  name="habit" 
+                  value={this.state.valueHabit}
+                  onChange={this.handleChange}
+                />
               </label>
               <label className='form-label'>
                 <h4>Choose color:</h4>
                 <TwitterPicker
-                  style={{marginTop: '20px'}}
+                  color={this.state.colorPicker}
+                  onChangeComplete={this.handleChangeColor}
                 />
               </label>
               <label className='form-label'>
                 <h4>Do you want to keep or lose the habit?</h4>
-                <input type='checkbox' onClick={this.toggleTypeOfHabit} />
+                {this.state.typeOfHabit === 'keep it'
+                  ? <input type='checkbox' onClick={this.toggleTypeOfHabit} checked />
+                  : <input type='checkbox' onClick={this.toggleTypeOfHabit} />
+                }
                 <span className='form-text'>{this.state.typeOfHabit}</span>
               </label>
               <input type="submit" value="Submit" />
             </form>
           </div>
         </ReactModal>
+
       </>
     )
   }
