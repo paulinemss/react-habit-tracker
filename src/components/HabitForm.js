@@ -21,7 +21,7 @@ export default class HabitForm extends React.Component {
     this.state = {
       showModal: false,
       valueHabit: '',
-      colorPicker: '#fff',
+      colorPicker: '#FFC0CB',
       typeOfHabit: 'keep it',
       isPositive: true
     }
