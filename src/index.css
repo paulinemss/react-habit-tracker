@@ -88,9 +88,13 @@ h4 {
   margin: 0 40px;
   padding: 0;
   list-style-type: none;
-  height: 70vh;
   width: 57vw; 
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.all-habits {
+  overflow-y: auto;
+  height: 60vh;
 }
 
 .row {
@@ -99,7 +103,7 @@ h4 {
 }
 
 .week-days {
-  margin-left: 150px; 
+  margin-left: 180px; 
   color: #83868a; 
 }
 
@@ -110,7 +114,7 @@ h4 {
 .calendar-habit {
   display: flex; 
   align-items: center;
-  width: 150px;
+  width: 180px;
 }
 
 .icon-habit {
@@ -134,4 +138,38 @@ h4 {
 
 .calendar-btn:focus {
   transform: scale(1.2);
+}
+
+.form-text {
+  font-style: italic; 
+  font-size: 14px; 
+}
+
+.color-title {
+  margin-bottom: 13px; 
+}
+
+.input-habit-text {
+  width: 276px; 
+  border: none; 
+  border-radius: 3px; 
+  box-shadow: 0px 1px 3px 0.9px rgba(0,0,0,0.2); 
+} 
+
+.checkbox {
+  margin-bottom: 10px; 
+  display: flex;
+  align-items: baseline;
+}
+
+.checkbox-form {
+  cursor: pointer;
+  box-shadow: 0px 1px 1px 0.9px rgba(0,0,0,0.2); 
+  width: 15px;
+  height: 15px; 
+}
+
+.checkbox-text {
+  font-size: 14px; 
+  margin-left: 10px; 
 }

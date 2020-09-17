@@ -22,7 +22,7 @@ export default class HabitForm extends React.Component {
       showModal: false,
       valueHabit: '',
       colorPicker: '#FFC0CB',
-      typeOfHabit: 'keep it',
+      typeOfHabit: 'build the habit',
       isPositive: true
     }
 
@@ -62,13 +62,13 @@ export default class HabitForm extends React.Component {
   }
 
   toggleTypeOfHabit () {
-    this.state.typeOfHabit === 'keep it' 
+    this.state.typeOfHabit === 'build the habit' 
       ? this.setState({ 
-        typeOfHabit: 'lose it',
+        typeOfHabit: 'lose the habit',
         isPositive: false 
         })
       : this.setState({ 
-        typeOfHabit: 'keep it',
+        typeOfHabit: 'build the habit',
         isPositive: true 
         })
   }
@@ -97,29 +97,33 @@ export default class HabitForm extends React.Component {
             </button>
             <form className='add-habit-form' onSubmit={this.handleSubmit}>
               <label className='form-label'>
-                <h4>Habit:</h4>
-                <span className='form-text'>maximum 30 characters</span>
+                <h4>enter your new habit</h4>
+                <span className='form-text'>max. 15 characters</span>
                 <input 
-                  type="text" 
-                  name="habit" 
+                  type='text'
+                  className='input-habit-text'
+                  name='habit'
+                  maxLength='15'
                   value={this.state.valueHabit}
                   onChange={this.handleChange}
                 />
               </label>
               <label className='form-label'>
-                <h4>Choose color:</h4>
+                <h4 className='color-title'>choose a matching color</h4>
                 <TwitterPicker
                   color={this.state.colorPicker}
                   onChangeComplete={this.handleChangeColor}
                 />
               </label>
               <label className='form-label'>
-                <h4>Do you want to keep or lose the habit?</h4>
-                {this.state.typeOfHabit === 'keep it'
-                  ? <input type='checkbox' onClick={this.toggleTypeOfHabit} checked />
-                  : <input type='checkbox' onClick={this.toggleTypeOfHabit} />
-                }
-                <span className='form-text'>{this.state.typeOfHabit}</span>
+                <h4>you're trying to</h4>
+                <div className='checkbox'>
+                  {this.state.typeOfHabit === 'build the habit'
+                    ? <input className='checkbox-form' type='checkbox' onClick={this.toggleTypeOfHabit} checked />
+                    : <input className='checkbox-form' type='checkbox' onClick={this.toggleTypeOfHabit} />
+                  }
+                  <span className='checkbox-text'>{this.state.typeOfHabit}</span>
+                </div>
               </label>
               <input type="submit" value="Submit" />
             </form>

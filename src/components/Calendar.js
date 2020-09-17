@@ -28,6 +28,7 @@ export default class Calendar extends React.Component {
               </li>
             ))}
           </div>
+          <div className='all-habits'>
           {habits.map((habit, index) => (
             <div className='row'>
               <li key={index}>
@@ -67,6 +68,7 @@ export default class Calendar extends React.Component {
               ))}
             </div>
           ))}
+          </div>
         </ul>
       </div>
     )
