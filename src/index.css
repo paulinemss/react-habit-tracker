@@ -130,7 +130,7 @@ h4 {
   margin: 0 40px;
   padding: 0;
   list-style-type: none;
-  width: 57vw; 
+  width: 60vw; 
   overflow-y: auto;
 }
 
@@ -172,13 +172,15 @@ h4 {
   font-size: 14px; 
   border-radius: 50%; 
   padding: 5px; 
-  margin-left: 10px; 
+  margin-left: -20px; 
   height: 30px;
   width: 30px; 
+  outline: none; 
 }
 
 .trash-btn:focus {
   background-color: #edf2fa;
+  transform: scale(1.2);
 }
 
 .trash-btn:hover {

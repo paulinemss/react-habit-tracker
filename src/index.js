@@ -39,12 +39,22 @@ class App extends React.Component {
     }
 
     this.addHabit = this.addHabit.bind(this)
+    this.removeHabit = this.removeHabit.bind(this)
     this.toggleHabit = this.toggleHabit.bind(this)
   }
 
   addHabit (habit) {
     const habitsCopy = this.state.habits.slice()
     habitsCopy.push(habit)
+    this.setState({ habits: habitsCopy })
+  }
+
+  removeHabit (habit) {
+    const habitsCopy = this.state.habits.filter((x) => {
+      if (x.title !== habit.title) {
+        return x; 
+      }
+    })
     this.setState({ habits: habitsCopy })
   }
 
@@ -84,6 +94,7 @@ class App extends React.Component {
           habits={this.state.habits} 
           dates={this.state.dates} 
           toggleHabit={this.toggleHabit} 
+          removeHabit={this.removeHabit}
         />
       </>
     )

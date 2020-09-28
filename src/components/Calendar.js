@@ -14,7 +14,7 @@ export default class Calendar extends React.Component {
   }
 
   render () {
-    const { habits, dates, toggleHabit } = this.props
+    const { habits, dates, removeHabit, toggleHabit } = this.props
     const dateList = Object.keys(dates)
     const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
@@ -48,9 +48,6 @@ export default class Calendar extends React.Component {
                       {habit.title}
                     </>
                 }
-                <button className='trash-btn'>
-                  <FaRegTrashAlt />
-                </button>
               </li>
               {dateList.map((date) => (
                 <div className='calendar-box'>
@@ -69,6 +66,12 @@ export default class Calendar extends React.Component {
                   }
                 </div>
               ))}
+              <button 
+                className='trash-btn'
+                onClick={() => removeHabit(habit)}
+              >
+                  <FaRegTrashAlt />
+              </button>
             </div>
           ))}
           </div>
