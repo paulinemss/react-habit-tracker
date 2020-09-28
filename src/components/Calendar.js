@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCircle, FaTimes } from 'react-icons/fa';
+import { FaCircle, FaTimes, FaRegTrashAlt } from 'react-icons/fa';
 
 export default class Calendar extends React.Component {
   constructor (props) {
@@ -31,23 +31,26 @@ export default class Calendar extends React.Component {
           <div className='all-habits'>
           {habits.map((habit, index) => (
             <div className='row'>
-              <li key={index}>
+              <li key={index} className='calendar-habit'>
                 {habit.isPositive
-                  ? <span className='calendar-habit'>
+                  ? <>
                       <FaCircle 
                         className='icon-habit'
                         style={{color: habit.color}} 
                       /> 
                       {habit.title}
-                    </span>
-                  : <span className='calendar-habit'>
+                    </>
+                  : <>
                       <FaTimes 
                         className='icon-habit'
                         style={{color: habit.color}} 
                       /> 
                       {habit.title}
-                    </span>
+                    </>
                 }
+                <button className='trash-btn'>
+                  <FaRegTrashAlt />
+                </button>
               </li>
               {dateList.map((date) => (
                 <div className='calendar-box'>

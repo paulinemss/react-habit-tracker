@@ -1,3 +1,5 @@
+/* Main CSS */
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
 body {
@@ -9,6 +11,8 @@ h4 {
   margin: 0; 
 }
 
+/* Title component CSS */
+
 .title {
   font-size: 30px; 
   margin-top: 40px;
@@ -16,6 +20,8 @@ h4 {
   font-weight: 600; 
   color: #262c33;
 }
+
+/* HabitForm component CSS */
 
 .add-habit-main {
   margin-top: 20px; 
@@ -84,6 +90,42 @@ h4 {
   margin-top: 10px; 
 }
 
+.checkbox {
+  margin-bottom: 10px; 
+  display: flex;
+  align-items: baseline;
+}
+
+.checkbox-form {
+  cursor: pointer;
+  box-shadow: 0px 1px 1px 0.9px rgba(0,0,0,0.2); 
+  width: 15px;
+  height: 15px; 
+}
+
+.checkbox-text {
+  font-size: 14px; 
+  margin-left: 10px; 
+}
+
+.form-text {
+  font-style: italic; 
+  font-size: 14px; 
+}
+
+.color-title {
+  margin-bottom: 13px; 
+}
+
+.input-habit-text {
+  width: 276px; 
+  border: none; 
+  border-radius: 3px; 
+  box-shadow: 0px 1px 3px 0.9px rgba(0,0,0,0.2); 
+} 
+
+/* Calendar component CSS */
+
 .list-habits {
   margin: 0 40px;
   padding: 0;
@@ -113,8 +155,34 @@ h4 {
 
 .calendar-habit {
   display: flex; 
-  align-items: center;
+  align-items: baseline;
   width: 180px;
+}
+
+.row:hover .trash-btn {
+  visibility: visible; 
+}
+
+.trash-btn {
+  background: none;
+  border: none; 
+  cursor: pointer;
+  color: #83868a; 
+  visibility: hidden;
+  font-size: 14px; 
+  border-radius: 50%; 
+  padding: 5px; 
+  margin-left: 10px; 
+  height: 30px;
+  width: 30px; 
+}
+
+.trash-btn:focus {
+  background-color: #edf2fa;
+}
+
+.trash-btn:hover {
+  background-color: #edf2fa;
 }
 
 .icon-habit {
@@ -140,36 +208,3 @@ h4 {
   transform: scale(1.2);
 }
 
-.form-text {
-  font-style: italic; 
-  font-size: 14px; 
-}
-
-.color-title {
-  margin-bottom: 13px; 
-}
-
-.input-habit-text {
-  width: 276px; 
-  border: none; 
-  border-radius: 3px; 
-  box-shadow: 0px 1px 3px 0.9px rgba(0,0,0,0.2); 
-} 
-
-.checkbox {
-  margin-bottom: 10px; 
-  display: flex;
-  align-items: baseline;
-}
-
-.checkbox-form {
-  cursor: pointer;
-  box-shadow: 0px 1px 1px 0.9px rgba(0,0,0,0.2); 
-  width: 15px;
-  height: 15px; 
-}
-
-.checkbox-text {
-  font-size: 14px; 
-  margin-left: 10px; 
-}
