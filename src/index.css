@@ -62,7 +62,14 @@ h4 {
   border: 2px solid #edf2fa;
   outline: none;
   font-family: 'Open Sans';
-  width: 140px; 
+  width: 150px; 
+}
+
+.input-username::placeholder {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(131, 134, 138, 0.5);
 }
 
 .input-username:focus {
@@ -75,7 +82,7 @@ h4 {
 
 .today-date {
   margin-left: 40px;
-  margin-top: 8px; 
+  margin-top: 5px; 
   font-size: 20px; 
   color: #83868a; 
 }

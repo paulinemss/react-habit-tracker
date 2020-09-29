@@ -7,7 +7,7 @@ export default class Title extends React.Component {
 
     this.state = {
       valueUser: '',
-      username: ''
+      username: localStorage.getItem('username') || ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -22,11 +22,13 @@ export default class Title extends React.Component {
   addUsername (event) {
     if(event.key === 'Enter') {
       this.setState({ username: this.state.valueUser })
+      localStorage.setItem('username', this.state.valueUser)
     }
   }
 
   removeUsername () {
     this.setState({ username: '' })
+    localStorage.removeItem('username')
   }
 
   render () {
@@ -57,6 +59,7 @@ export default class Title extends React.Component {
                   onChange={this.handleChange}
                   onKeyDown={this.addUsername}
                   maxLength='20'
+                  placeholder='enter your name here'
                 />
               </form>
           }
