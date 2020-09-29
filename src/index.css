@@ -19,6 +19,65 @@ h4 {
   margin-left: 40px; 
   font-weight: 600; 
   color: #262c33;
+  display: flex; 
+}
+
+.title:hover .remove-user-btn {
+  visibility: visible;
+}
+
+.username {
+  margin-left: 10px; 
+  font-weight: 700; 
+}
+
+.remove-user-btn {
+  background: none;
+  border: none; 
+  cursor: pointer;
+  color: #83868a; 
+  visibility: hidden;
+  font-size: 12px; 
+  border-radius: 50%; 
+  margin-left: 10px; 
+  padding: 5px; 
+  height: 20px;
+  width: 20px; 
+  outline: none; 
+  position: absolute;
+}
+
+.remove-user-btn:focus {
+  background-color: #edf2fa;
+  transform: scale(1.2);
+}
+
+.remove-user-btn:hover {
+  background-color: #edf2fa;
+}
+
+.input-username {
+  margin-left: 10px; 
+  border-radius: 10px; 
+  border: 2px solid #edf2fa;
+  outline: none;
+  font-family: 'Open Sans';
+  width: 140px; 
+}
+
+.input-username:focus {
+  border-color: #017cff; 
+}
+
+.input-username:hover {
+  border-color: #017cff; 
+}
+
+.today-date {
+  margin-left: 40px;
+  margin-top: 8px; 
+  font-size: 20px; 
+  color: #83868a; 
 }
 
 /* HabitForm component CSS */
