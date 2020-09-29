@@ -21,23 +21,7 @@ class App extends React.Component {
         '2020-09-05T13:29:22+0000': ['Workout'],
         '2020-09-06T13:29:22+0000': ['Read', 'Workout', 'Meditate', 'Alcohol']
       },
-      habits: [{
-        title: 'Read',
-        color: '#ffac00',
-        isPositive: true
-      }, {
-        title: 'Workout',
-        color: '#9c5cff',
-        isPositive: true
-      }, {
-        title: 'Meditate',
-        color: '#52d3e4',
-        isPositive: true
-      }, {
-        title: 'Alcohol',
-        color: '#ff6c00',
-        isPositive: false
-      }]
+      habits: []
     }
 
     this.addHabit = this.addHabit.bind(this)
@@ -46,10 +30,26 @@ class App extends React.Component {
     this.toggleWeek = this.toggleWeek.bind(this)
   }
 
+  componentDidMount () {
+    const habitData = localStorage.getItem('habits');
+    console.log(habitData);
+    if (habitData) {
+      const parsedData = JSON.parse(habitData)
+      this.setState({ habits: parsedData })
+    } else {
+      this.setState({ habits: [{
+        title: 'Read',
+        color: '#ffac01',
+        isPositive: true
+      }] })
+    }
+  }
+
   addHabit (habit) {
     const habitsCopy = this.state.habits.slice()
     habitsCopy.push(habit)
     this.setState({ habits: habitsCopy })
+    localStorage.setItem('habits', JSON.stringify(habitsCopy))
   }
 
   removeHabit (habit) {
@@ -59,6 +59,7 @@ class App extends React.Component {
       }
     })
     this.setState({ habits: habitsCopy })
+    localStorage.setItem('habits', habitsCopy)
   }
 
   toggleHabit (habit, date) {
