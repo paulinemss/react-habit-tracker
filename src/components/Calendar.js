@@ -21,6 +21,7 @@ export default class Calendar extends React.Component {
     return (
       <div>
         <ul className='list-habits'>
+        <div className='separating-line'></div>
           <div className='row week-days'>
             {weekDays.map((day, index) => (
               <li key={index}>

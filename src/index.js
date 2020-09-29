@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Title from './components/Title'
 import HabitForm from './components/HabitForm'
+import WeekView from './components/WeekView'
 import Calendar from './components/Calendar'
 
 class App extends React.Component {
@@ -10,6 +11,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+      now: new Date(),
       dates: {
         '2020-08-31T13:29:22+0000': ['Read', 'Workout', 'Alcohol'],
         '2020-09-01T13:29:22+0000': ['Workout', 'Alcohol'],
@@ -41,6 +43,7 @@ class App extends React.Component {
     this.addHabit = this.addHabit.bind(this)
     this.removeHabit = this.removeHabit.bind(this)
     this.toggleHabit = this.toggleHabit.bind(this)
+    this.toggleWeek = this.toggleWeek.bind(this)
   }
 
   addHabit (habit) {
@@ -83,12 +86,36 @@ class App extends React.Component {
     }
   }
 
+  toggleWeek (direction) {
+    const newDate = new Date(this.state.now); 
+
+    if (direction === 'left') {
+      newDate.setDate(newDate.getDate() - 7) 
+
+      this.setState({ 
+        now: newDate
+      })
+    } else if (direction === 'right') {
+      newDate.setDate(newDate.getDate() + 7) 
+      
+      this.setState({ 
+        now: newDate
+      })
+    }
+  }
+
   render() {
     return (
       <>
-        <Title />
+        <Title 
+          now={this.state.now}
+        />
         <HabitForm 
           addHabit={this.addHabit}
+        />
+        <WeekView 
+          now={this.state.now}
+          toggleWeek={this.toggleWeek}
         />
         <Calendar 
           habits={this.state.habits} 
