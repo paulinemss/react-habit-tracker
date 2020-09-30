@@ -12,15 +12,7 @@ class App extends React.Component {
 
     this.state = {
       now: new Date(),
-      dates: {
-        '2020-08-31T13:29:22+0000': ['Read', 'Workout', 'Alcohol'],
-        '2020-09-01T13:29:22+0000': ['Workout', 'Alcohol'],
-        '2020-09-02T13:29:22+0000': ['Read', 'Workout', 'Alcohol'],
-        '2020-09-03T13:29:22+0000': ['Read', 'Meditate', 'Alcohol'],
-        '2020-09-04T13:29:22+0000': ['Read', 'Workout', 'Meditate'],
-        '2020-09-05T13:29:22+0000': ['Workout'],
-        '2020-09-06T13:29:22+0000': ['Read', 'Workout', 'Meditate', 'Alcohol']
-      },
+      dates: {},
       habits: []
     }
 
@@ -32,17 +24,21 @@ class App extends React.Component {
 
   componentDidMount () {
     const habitData = localStorage.getItem('habits');
-    console.log(habitData);
+    const datesData = localStorage.getItem('dates');
+
     if (habitData) {
-      const parsedData = JSON.parse(habitData)
-      this.setState({ habits: parsedData })
-    } else {
-      this.setState({ habits: [{
-        title: 'Read',
-        color: '#ffac01',
-        isPositive: true
-      }] })
+      const parsedHabitData = JSON.parse(habitData)
+      this.setState({ habits: parsedHabitData })
     }
+
+    if (datesData) {
+      const parsedDateData = JSON.parse(datesData)
+      this.setState({ dates: parsedDateData })
+    }
+  }
+
+  componentDidUpdate () {
+    localStorage.setItem('dates', JSON.stringify(this.state.dates))
   }
 
   addHabit (habit) {
@@ -59,11 +55,21 @@ class App extends React.Component {
       }
     })
     this.setState({ habits: habitsCopy })
-    localStorage.setItem('habits', habitsCopy)
+    localStorage.setItem('habits', JSON.stringify(habitsCopy))
   }
 
   toggleHabit (habit, date) {
     let newCompletedHabits = []
+
+    if (!this.state.dates.hasOwnProperty(date)) {
+      this.setState(prevState => ({
+        dates: {
+          ...prevState.dates,
+          [date]: [habit]
+        }
+      }))
+      return; 
+    }
 
     if (this.state.dates[date].includes(habit)) {
       newCompletedHabits = this.state.dates[date].filter((x) => x !== habit)
@@ -119,6 +125,7 @@ class App extends React.Component {
           toggleWeek={this.toggleWeek}
         />
         <Calendar 
+          now={this.state.now}
           habits={this.state.habits} 
           dates={this.state.dates} 
           toggleHabit={this.toggleHabit} 
