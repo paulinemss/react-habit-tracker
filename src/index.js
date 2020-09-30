@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Title from './components/Title'
 import HabitForm from './components/HabitForm'
+import WeekView from './components/WeekView'
 import Calendar from './components/Calendar'
 
 class App extends React.Component {
@@ -10,43 +11,41 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      dates: {
-        '2020-08-31T13:29:22+0000': ['Read', 'Workout', 'Alcohol'],
-        '2020-09-01T13:29:22+0000': ['Workout', 'Alcohol'],
-        '2020-09-02T13:29:22+0000': ['Read', 'Workout', 'Alcohol'],
-        '2020-09-03T13:29:22+0000': ['Read', 'Meditate', 'Alcohol'],
-        '2020-09-04T13:29:22+0000': ['Read', 'Workout', 'Meditate'],
-        '2020-09-05T13:29:22+0000': ['Workout'],
-        '2020-09-06T13:29:22+0000': ['Read', 'Workout', 'Meditate', 'Alcohol']
-      },
-      habits: [{
-        title: 'Read',
-        color: '#ffac00',
-        isPositive: true
-      }, {
-        title: 'Workout',
-        color: '#9c5cff',
-        isPositive: true
-      }, {
-        title: 'Meditate',
-        color: '#52d3e4',
-        isPositive: true
-      }, {
-        title: 'Alcohol',
-        color: '#ff6c00',
-        isPositive: false
-      }]
+      now: new Date(),
+      dates: {},
+      habits: []
     }
 
     this.addHabit = this.addHabit.bind(this)
     this.removeHabit = this.removeHabit.bind(this)
     this.toggleHabit = this.toggleHabit.bind(this)
+    this.toggleWeek = this.toggleWeek.bind(this)
+  }
+
+  componentDidMount () {
+    const habitData = localStorage.getItem('habits');
+    const datesData = localStorage.getItem('dates');
+
+    if (habitData) {
+      const parsedHabitData = JSON.parse(habitData)
+      this.setState({ habits: parsedHabitData })
+    }
+
+    if (datesData) {
+      const parsedDateData = JSON.parse(datesData)
+      this.setState({ dates: parsedDateData })
+    }
+  }
+
+  componentDidUpdate () {
+    localStorage.setItem('dates', JSON.stringify(this.state.dates))
   }
 
   addHabit (habit) {
     const habitsCopy = this.state.habits.slice()
     habitsCopy.push(habit)
     this.setState({ habits: habitsCopy })
+    localStorage.setItem('habits', JSON.stringify(habitsCopy))
   }
 
   removeHabit (habit) {
@@ -56,10 +55,21 @@ class App extends React.Component {
       }
     })
     this.setState({ habits: habitsCopy })
+    localStorage.setItem('habits', JSON.stringify(habitsCopy))
   }
 
   toggleHabit (habit, date) {
     let newCompletedHabits = []
+
+    if (!this.state.dates.hasOwnProperty(date)) {
+      this.setState(prevState => ({
+        dates: {
+          ...prevState.dates,
+          [date]: [habit]
+        }
+      }))
+      return; 
+    }
 
     if (this.state.dates[date].includes(habit)) {
       newCompletedHabits = this.state.dates[date].filter((x) => x !== habit)
@@ -83,14 +93,39 @@ class App extends React.Component {
     }
   }
 
+  toggleWeek (direction) {
+    const newDate = new Date(this.state.now); 
+
+    if (direction === 'left') {
+      newDate.setDate(newDate.getDate() - 7) 
+
+      this.setState({ 
+        now: newDate
+      })
+    } else if (direction === 'right') {
+      newDate.setDate(newDate.getDate() + 7) 
+      
+      this.setState({ 
+        now: newDate
+      })
+    }
+  }
+
   render() {
     return (
       <>
-        <Title />
+        <Title 
+          now={this.state.now}
+        />
         <HabitForm 
           addHabit={this.addHabit}
         />
+        <WeekView 
+          now={this.state.now}
+          toggleWeek={this.toggleWeek}
+        />
         <Calendar 
+          now={this.state.now}
           habits={this.state.habits} 
           dates={this.state.dates} 
           toggleHabit={this.toggleHabit} 

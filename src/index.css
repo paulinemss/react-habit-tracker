@@ -190,7 +190,60 @@ h4 {
   box-shadow: 0px 1px 3px 0.9px rgba(0,0,0,0.2); 
 } 
 
+/* Week view component CSS  */
+
+.week-view {
+  display: flex; 
+  margin-left: 40px; 
+  margin-top: 30px; 
+  align-items: baseline;
+}
+
+.toggle-week {
+  display: flex;
+  margin-left: -10px; 
+}
+
+.toggle-week-btn {
+  font-family: 'Open Sans';
+  cursor: pointer;
+  border: 2px solid #edf2fa;
+  background: none; 
+  border-radius: 50%;  
+  font-weight: 700; 
+  padding: 10px; 
+  font-size: 18px; 
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  outline: none; 
+  margin-left: 10px; 
+}
+
+.toggle-week-btn:focus {
+  border-color: #017cff; 
+}
+
+.toggle-week-btn:hover {
+  border-color: #017cff; 
+}
+
+.week-date {
+  margin-left: 20px; 
+  font-size: 20px; 
+  font-weight: 600; 
+}
+
 /* Calendar component CSS */
+
+.separating-line {
+  height: 2px;
+  width: 89%;
+  border-radius: 2px; 
+  margin-top: 20px;
+  margin-left: -5px;  
+  background: #edf2fa; 
+}
 
 .list-habits {
   margin: 0 40px;

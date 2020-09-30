@@ -1,9 +1,6 @@
 import React from 'react';
 import { GrFormClose } from 'react-icons/gr';
-
-const now = new Date()
-const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+import { weekdays, months } from '../constants.js'
 
 export default class Title extends React.Component {
   constructor (props) {
@@ -36,6 +33,8 @@ export default class Title extends React.Component {
   }
 
   render () {
+    const { now } = this.props
+
     return (
       <>
         <div className='title'>
