@@ -113,11 +113,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <div className='main'>
         <Title 
           now={this.state.now}
         />
         <HabitForm 
+          habits={this.state.habits}
           addHabit={this.addHabit}
         />
         <WeekView 
@@ -131,7 +132,7 @@ class App extends React.Component {
           toggleHabit={this.toggleHabit} 
           removeHabit={this.removeHabit}
         />
-      </>
+      </div>
     )
   }
 }

@@ -24,7 +24,9 @@ export default class HabitForm extends React.Component {
       valueHabit: '',
       colorPicker: '#FFC0CB',
       typeOfHabit: 'build the habit',
-      isPositive: true
+      isPositive: true,
+      btnOff: false,
+      showAlert: 'hidden'
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this)
@@ -48,7 +50,20 @@ export default class HabitForm extends React.Component {
   }
   
   handleChange (event) {
-    this.setState({ valueHabit: event.target.value })
+    const newHabit = event.target.value
+    this.setState({ valueHabit: newHabit })
+
+    if(this.props.habits.some(habit => habit.title.toLowerCase() === newHabit.toLowerCase())){
+      this.setState({ 
+        btnOff: true,
+        showAlert: 'visible'
+      })
+    } else {
+      this.setState({ 
+        btnOff: false,
+        showAlert: 'hidden'
+      })
+    }
   }
 
   handleSubmit (event) {
@@ -60,6 +75,7 @@ export default class HabitForm extends React.Component {
       isPositive: this.state.isPositive
     } 
     this.props.addHabit(habit)
+    this.setState({ valueHabit: '' })
   }
 
   toggleTypeOfHabit () {
@@ -102,12 +118,15 @@ export default class HabitForm extends React.Component {
                 <span className='form-text'>max. 15 characters</span>
                 <input 
                   type='text'
-                  className='input-habit-text'
+                  className={`input-habit-text ${this.state.btnOff ? 'border-alert' : ''}`}
                   name='habit'
                   maxLength='15'
                   value={this.state.valueHabit}
                   onChange={this.handleChange}
                 />
+                <span className='alert' style={{visibility: this.state.showAlert}}>
+                  you are already tracking this habit
+                </span>
               </label>
               <label className='form-label'>
                 <h4 className='color-title'>choose a matching color</h4>
@@ -126,7 +145,7 @@ export default class HabitForm extends React.Component {
                   <span className='checkbox-text'>{this.state.typeOfHabit}</span>
                 </div>
               </label>
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Submit" disabled={this.state.valueHabit ? this.state.btnOff : true} />
             </form>
           </div>
         </ReactModal>

@@ -185,10 +185,30 @@ h1, h4, p {
 
 .input-habit-text {
   width: 276px; 
-  border: none; 
+  border: 1px solid #83868a; 
+  outline: none; 
   border-radius: 3px; 
-  box-shadow: 0px 1px 3px 0.9px rgba(0,0,0,0.2); 
+  font-family: 'Open Sans';
 } 
+
+.input-habit-text:focus {
+  border: 1px solid black; 
+}
+
+.alert {
+  color: red; 
+  font-size: 13px; 
+  margin-bottom: -10px; 
+  margin-top: 5px; 
+}
+
+.border-alert {
+  border: 1px solid red; 
+}
+
+.border-alert:focus {
+  border: 1px solid red; 
+}
 
 /* Week view component CSS  */
 
@@ -279,24 +299,27 @@ h1, h4, p {
 
 .separating-line {
   height: 2px;
-  width: 89%;
   border-radius: 2px; 
-  margin-top: 20px;
-  margin-left: -5px;  
+  margin: 20px 103px 0 -5px; 
   background: #edf2fa; 
 }
 
 .list-habits {
-  margin: 0 40px;
   padding: 0;
+  margin: 0 40px 40px 40px; 
   list-style-type: none;
-  width: 60vw; 
-  overflow-y: auto;
+  width: 920px; 
+  height: 50vh; 
 }
 
 .all-habits {
-  overflow-y: auto;
-  height: 60vh;
+  overflow-y: auto; 
+  height: 100%; 
+  list-style-type: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 .row {
