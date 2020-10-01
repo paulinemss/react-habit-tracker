@@ -475,13 +475,14 @@ h1, h2, h4, p {
 }
 
 .daily-habit {
-  padding: 10px; 
+  padding: 15px; 
   margin-top: 20px; 
+  transition: all 1.5s ease;
 }
 
 .daily-habit h4 {
   font-weight: 500; 
-  font-size: 18px; 
+  font-size: 20px; 
 }
 
 .completed {
@@ -494,4 +495,41 @@ h1, h2, h4, p {
   justify-content: space-between;
   align-items: center;
   margin-top: 5px; 
+}
+
+.undo-btn {
+  background: none;
+  color: #fff;
+  font-family: 'Open Sans';
+  border: none; 
+  outline: none; 
+  font-size: 14px; 
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.undo-btn:focus {
+  border: 1px solid #fff; 
+  border-radius: 5px; 
+}
+
+.complete-btn {
+  background: none; 
+  font-family: 'Open Sans';
+  margin-top: 5px; 
+  cursor: pointer;
+  border: 2px solid #edf2fa; 
+  border-radius: 5px; 
+  font-weight: 700; 
+  padding: 5px 20px; 
+  color: #017cff;
+  outline: none; 
+}
+
+.complete-btn:focus {
+  border-color: #017cff;
+}
+
+.complete-btn:hover {
+  border-color: #017cff;
 }

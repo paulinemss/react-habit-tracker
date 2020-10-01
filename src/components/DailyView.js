@@ -15,7 +15,14 @@ export default class DailyView extends React.Component {
   }
 
   toggleDay (direction) {
-    console.log(direction)
+    const newToday = new Date(this.state.now)
+    if (direction === 'left') {
+      newToday.setDate(this.state.now.getDate() - 1)
+      this.setState({ now: newToday })
+    } else if (direction === 'right') {
+      newToday.setDate(this.state.now.getDate() + 1)
+      this.setState({ now: newToday })
+    }
   }
 
   isHabitCompleted (habit) {
@@ -23,10 +30,9 @@ export default class DailyView extends React.Component {
     today.setHours(3, 0, 0, 0)
     const todayISO = today.toISOString()
 
-    if (this.props.dates[todayISO].includes(habit.title)) {
+    if (this.props.dates[todayISO] && this.props.dates[todayISO].includes(habit.title)) {
       return true
     } else {
-      console.log('couldnt find')
       return false 
     }
   }
@@ -61,7 +67,7 @@ export default class DailyView extends React.Component {
                     <h4>{habit.title}</h4>
                     <div className='completed-checkmark'>
                       <p><HiCheck /> Completed</p>
-                      <button onClick={() => toggleHabit(habit.title, todayISO)}>
+                      <button className='undo-btn' onClick={() => toggleHabit(habit.title, todayISO)}>
                         Undo
                       </button>
                     </div>
@@ -71,7 +77,7 @@ export default class DailyView extends React.Component {
                     className='daily-habit todo'
                   >
                     <h4>{habit.title}</h4>
-                    <button onClick={() => toggleHabit(habit.title, todayISO)}>
+                    <button className='complete-btn' onClick={() => toggleHabit(habit.title, todayISO)}>
                       Mark Complete
                     </button>
                   </div>
