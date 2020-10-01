@@ -26,13 +26,12 @@ export default class Calendar extends React.Component {
     dateArray.push(mondayISO)
 
     for (let i=1; i<7; i++) {
-      const weekday = new Date()
+      const weekday = new Date(monday)
       weekday.setDate(monday.getDate() + i)
       this.setDateTimesToZero(weekday)
       const weekdayISO = weekday.toISOString()
       dateArray.push(weekdayISO)
     }
-
     return dateArray
   }
 
@@ -90,6 +89,7 @@ export default class Calendar extends React.Component {
                     ? <div className='calendar-box'>
                         <button 
                           aria-label={`unselect habit: ${habit.title} on ${this.renderDateFormat(date)}`}
+                          title={this.renderDateFormat(date)}
                           onClick={() => toggleHabit(habit.title, date)}
                           className='calendar-btn' 
                           style={{backgroundColor: habit.color}}>
@@ -98,6 +98,7 @@ export default class Calendar extends React.Component {
                     : <div className='calendar-box'>
                         <button 
                           aria-label={`select habit: ${habit.title} on ${this.renderDateFormat(date)}`}
+                          title={this.renderDateFormat(date)}
                           onClick={() => toggleHabit(habit.title, date)} 
                           className='calendar-btn'>
                         </button>

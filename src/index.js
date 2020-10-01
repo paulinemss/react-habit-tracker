@@ -5,6 +5,7 @@ import Title from './components/Title'
 import HabitForm from './components/HabitForm'
 import WeekView from './components/WeekView'
 import Calendar from './components/Calendar'
+import DailyView from './components/DailyView'
 
 class App extends React.Component {
   constructor (props) {
@@ -114,24 +115,33 @@ class App extends React.Component {
   render() {
     return (
       <div className='main'>
-        <Title 
-          now={this.state.now}
-        />
-        <HabitForm 
-          habits={this.state.habits}
-          addHabit={this.addHabit}
-        />
-        <WeekView 
-          now={this.state.now}
-          toggleWeek={this.toggleWeek}
-        />
-        <Calendar 
-          now={this.state.now}
-          habits={this.state.habits} 
-          dates={this.state.dates} 
-          toggleHabit={this.toggleHabit} 
-          removeHabit={this.removeHabit}
-        />
+        <div className='left-view'>
+          <Title 
+            now={this.state.now}
+          />
+          <HabitForm 
+            habits={this.state.habits}
+            addHabit={this.addHabit}
+          />
+          <WeekView 
+            now={this.state.now}
+            toggleWeek={this.toggleWeek}
+          />
+          <Calendar 
+            now={this.state.now}
+            habits={this.state.habits} 
+            dates={this.state.dates} 
+            toggleHabit={this.toggleHabit} 
+            removeHabit={this.removeHabit}
+          />
+        </div>
+        <div className='right-view'>
+          <DailyView 
+            habits={this.state.habits}
+            dates={this.state.dates}
+            toggleHabit={this.toggleHabit} 
+          />
+        </div>
       </div>
     )
   }

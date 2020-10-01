@@ -1,6 +1,5 @@
 import React from 'react';
 import { GrFormClose } from 'react-icons/gr';
-import { weekdays, months } from '../constants.js'
 
 export default class Title extends React.Component {
   constructor (props) {
@@ -33,8 +32,6 @@ export default class Title extends React.Component {
   }
 
   render () {
-    const { now } = this.props
-
     return (
       <>
         <div className='title'>
@@ -64,7 +61,7 @@ export default class Title extends React.Component {
           }
         </div>
         <div className='today-date'>
-          {weekdays[now.getDay()]} {now.getDate()} {months[now.getMonth()]}
+          start building habits now. 
         </div>
       </>
     )
