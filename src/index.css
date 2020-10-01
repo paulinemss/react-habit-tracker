@@ -429,12 +429,8 @@ h1, h2, h4, p {
   width: 30px;
   height: 30px; 
   border-radius: 5px; 
-  transition: all 1s;
+  transition: all .5s;
   outline: none; 
-}
-
-.calendar-btn:focus {
-  transform: scale(1.2);
 }
 
 /* Side component CSS */
@@ -477,7 +473,6 @@ h1, h2, h4, p {
 .daily-habit {
   padding: 15px; 
   margin-top: 20px; 
-  transition: all 1.5s ease;
 }
 
 .daily-habit h4 {
