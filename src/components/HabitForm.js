@@ -22,7 +22,7 @@ export default class HabitForm extends React.Component {
     this.state = {
       showModal: false,
       valueHabit: '',
-      colorPicker: '#FFC0CB',
+      colorPicker: '#017CFF',
       typeOfHabit: 'build the habit',
       isPositive: true,
       btnOff: false,
@@ -52,8 +52,9 @@ export default class HabitForm extends React.Component {
   handleChange (event) {
     const newHabit = event.target.value
     this.setState({ valueHabit: newHabit })
+    newHabit.trim()
 
-    if(this.props.habits.some(habit => habit.title.toLowerCase() === newHabit.toLowerCase())){
+    if(this.props.habits.some(habit => habit.title.toLowerCase() === newHabit.toLowerCase().trim())){
       this.setState({ 
         btnOff: true,
         showAlert: 'visible'
@@ -136,7 +137,7 @@ export default class HabitForm extends React.Component {
                 />
               </label>
               <label className='form-label'>
-                <h4>you're trying to</h4>
+                <h4 className='positivity-title'>you're trying to</h4>
                 <div className='checkbox'>
                   {this.state.typeOfHabit === 'build the habit'
                     ? <input className='checkbox-form' type='checkbox' onClick={this.toggleTypeOfHabit} checked />
@@ -145,7 +146,12 @@ export default class HabitForm extends React.Component {
                   <span className='checkbox-text'>{this.state.typeOfHabit}</span>
                 </div>
               </label>
-              <input type="submit" value="Submit" disabled={this.state.valueHabit ? this.state.btnOff : true} />
+              <input 
+                className='submit-form-btn' 
+                type="submit" 
+                value='Submit'
+                disabled={this.state.valueHabit.trim() ? this.state.btnOff : true}
+              />
             </form>
           </div>
         </ReactModal>

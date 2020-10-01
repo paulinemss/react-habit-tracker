@@ -149,28 +149,28 @@ h1, h4, p {
 .form-label {
   display: flex; 
   flex-direction: column;
-  margin-top: 20px; 
+  margin-top: 10px; 
 }
 
-.form-label input {
+.form-label > input {
   margin-top: 10px; 
 }
 
 .checkbox {
   margin-bottom: 10px; 
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  margin-top: 10px; 
 }
 
 .checkbox-form {
   cursor: pointer;
-  box-shadow: 0px 1px 1px 0.9px rgba(0,0,0,0.2); 
-  width: 15px;
-  height: 15px; 
+  width: 16px;
+  height: 16px; 
 }
 
 .checkbox-text {
-  font-size: 14px; 
+  font-size: 15px; 
   margin-left: 10px; 
 }
 
@@ -183,16 +183,52 @@ h1, h4, p {
   margin-bottom: 13px; 
 }
 
-.input-habit-text {
-  width: 276px; 
-  border: 1px solid #83868a; 
+.positivity-title {
+  margin-top: 10px; 
+}
+
+.submit-form-btn {
+  background: none; 
+  font-family: 'Open Sans';
+  cursor: pointer;
+  color: #017cff; 
+  border: 2px solid #017cff;
+  border-radius: 15px; 
+  font-weight: 700; 
+  padding: 5px 10px; 
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+  width: 120px; 
   outline: none; 
-  border-radius: 3px; 
+  margin-top: 10px; 
+  align-self: center; 
+}
+
+.submit-form-btn:focus {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2); 
+}
+
+.submit-form-btn:disabled {
+  border: 2px solid #edf2fa !important;
+  cursor: default; 
+}
+
+.twitter-picker {
+  box-shadow: none; 
+}
+
+.input-habit-text {
+  width: 260px; 
+  border: 2px solid #edf2fa;
+  outline: none; 
+  padding: 5px; 
+  border-radius: 10px; 
   font-family: 'Open Sans';
 } 
 
 .input-habit-text:focus {
-  border: 1px solid black; 
+  border: 1px solid #83868a;
 }
 
 .alert {
