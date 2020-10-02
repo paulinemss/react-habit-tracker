@@ -1,6 +1,7 @@
 import React from 'react';
 import { weekdays, months } from '../constants.js'; 
 import { HiChevronLeft, HiChevronRight, HiCheck } from 'react-icons/hi';
+import { CgMenu } from 'react-icons/cg'; 
 
 export default class DailyView extends React.Component {
   constructor (props) {
@@ -38,7 +39,7 @@ export default class DailyView extends React.Component {
   }
   
   render () {
-    const { habits, toggleHabit } = this.props
+    const { habits, toggleHabit, isOpen, toggleDailyView } = this.props
     const today = this.state.now; 
     today.setHours(3, 0, 0, 0)
     const todayISO = today.toISOString()
@@ -54,6 +55,13 @@ export default class DailyView extends React.Component {
             <button className='toggle-week-btn' onClick={() => this.toggleDay('right')}>
               <HiChevronRight />
             </button>
+            <button 
+              className={`daily-view-btn ${isOpen ? 'showBtn' : 'hideBtn'}`}
+              style={{ marginLeft: '10px' }} 
+              onClick={toggleDailyView}
+            >
+                <CgMenu />
+          </button>
           </div>
         </div>
         <div className='daily-tasks'>
@@ -88,3 +96,6 @@ export default class DailyView extends React.Component {
     )
   }
 }
+
+// isOpen={this.state.isOpen}
+//             toggleDailyView={this.toggleDailyView}

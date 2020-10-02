@@ -19,6 +19,7 @@ h1, h2, h4, p {
 
 .left-view {
   margin-left: 20px; 
+  margin-bottom: 40px; 
 }
 
 .title {
@@ -527,4 +528,135 @@ h1, h2, h4, p {
 
 .complete-btn:hover {
   border-color: #017cff;
+}
+
+/* Daily view button */ 
+
+.daily-view {
+  display: none;
+  margin: 60px 20px 0 -180px; 
+  justify-content: flex-end; 
+}
+
+.daily-view-btn {
+  height: 40px;
+  width: 40px;
+  font-size: 18px; 
+  background: none;  
+  border: 2px solid #edf2fa;
+  border-radius: 10px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+.daily-view-btn:focus {
+  border-color: #017cff;
+}
+
+.daily-view-btn:hover {
+  border-color: #017cff;
+}
+
+.showBtn {
+  display: none;
+}
+
+.hideBtn {
+  display: none; 
+}
+
+/* Mobile responsive website */
+
+@media only screen and (max-width: 1350px) {
+  .daily-view {
+    display: flex; 
+  }
+  .main {
+    justify-content: center;
+    position: relative;
+  }
+  .blur {
+    filter: blur(2px); 
+  }
+  .closed {
+    display: none;
+  }
+  .open {
+    display: flex;
+    flex-direction: column;
+    position: absolute; 
+    right: 0;
+    width: 350px; 
+    margin-top: 0; 
+    margin-right: 60px; 
+    padding: 40px 30px; 
+    height: 100%;  
+    background: #fff; 
+  }
+  .showBtn {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .list-habits {
+    width: 100%;
+    margin-right: 10px;
+    margin-left: -10px; 
+  }
+  .separating-line {
+    margin-right: 70px; 
+  }
+  .left-view > * {
+    margin-left: -10px;  
+  }
+  .daily-view {
+    margin: 60px 20px 0 -130px; 
+  }
+  .open {
+    margin-right: 10px; 
+  }
+}
+
+@media only screen and (max-width: 910px) {
+  .list-habits {
+    width: 700px; 
+  }
+  .left-view > * {
+    margin-left: 0px;  
+  }
+  .week-days {
+    margin-left: 137px; 
+  }
+  .calendar-habit {
+    font-size: 13px; 
+  }
+  .separating-line {
+    margin-right: 50px; 
+  }
+  .daily-view {
+    margin: 60px 20px 0 -100px; 
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .week-view, .list-habits, .daily-view {
+    display: none; 
+  }
+  .main {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .left-view {
+    width: 90%; 
+  }
+  .right-view {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px; 
+    width: 90%; 
+  }
 }

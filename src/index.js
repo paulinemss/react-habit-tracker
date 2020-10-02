@@ -6,6 +6,7 @@ import HabitForm from './components/HabitForm'
 import WeekView from './components/WeekView'
 import Calendar from './components/Calendar'
 import DailyView from './components/DailyView'
+import { CgMenu } from 'react-icons/cg';
 
 class App extends React.Component {
   constructor (props) {
@@ -14,13 +15,15 @@ class App extends React.Component {
     this.state = {
       now: new Date(),
       dates: {},
-      habits: []
+      habits: [],
+      isOpen: false
     }
 
     this.addHabit = this.addHabit.bind(this)
     this.removeHabit = this.removeHabit.bind(this)
     this.toggleHabit = this.toggleHabit.bind(this)
     this.toggleWeek = this.toggleWeek.bind(this)
+    this.toggleDailyView = this.toggleDailyView.bind(this)
   }
 
   componentDidMount () {
@@ -112,10 +115,18 @@ class App extends React.Component {
     }
   }
 
+  toggleDailyView () {
+    if (this.state.isOpen) {
+      this.setState({ isOpen: false })
+    } else {
+      this.setState({ isOpen: true })
+    }
+  }
+
   render() {
     return (
       <div className='main'>
-        <div className='left-view'>
+        <div className={`left-view ${this.state.isOpen ? 'blur' : ''}`}>
           <Title 
             now={this.state.now}
           />
@@ -135,11 +146,18 @@ class App extends React.Component {
             removeHabit={this.removeHabit}
           />
         </div>
-        <div className='right-view'>
+        <div className='daily-view'>
+          <button className='daily-view-btn' onClick={this.toggleDailyView}>
+            <CgMenu />
+          </button>
+        </div>
+        <div className={`right-view ${this.state.isOpen ? 'open' : 'closed'}`}>
           <DailyView 
             habits={this.state.habits}
             dates={this.state.dates}
             toggleHabit={this.toggleHabit} 
+            isOpen={this.state.isOpen}
+            toggleDailyView={this.toggleDailyView}
           />
         </div>
       </div>
