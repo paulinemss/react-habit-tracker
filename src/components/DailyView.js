@@ -66,9 +66,10 @@ export default class DailyView extends React.Component {
         </div>
         <div className='daily-tasks'>
           <div className='daily-tasks-in'>
-            {habits.map((habit) => (
+            {habits.map((habit, index) => (
               this.isHabitCompleted(habit) 
                 ? <div
+                    key={index}
                     style={{backgroundColor: habit.color}}
                     className='daily-habit completed'
                   >
@@ -81,6 +82,7 @@ export default class DailyView extends React.Component {
                     </div>
                   </div>
                 : <div
+                    key={index}
                     style={{borderLeft: `4px solid ${habit.color}`}}
                     className='daily-habit todo'
                   >

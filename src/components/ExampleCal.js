@@ -46,8 +46,8 @@ export default class ExampleCal extends React.Component {
         </div>
         <div className='example-calendar'>
           {habitsExamples.map((habit, index) => (
-            <div className='row'>
-              <li key={index} className='calendar-habit'>
+            <div key={index} className='row'>
+              <li className='calendar-habit'>
                 {habit.isPositive
                   ? <>
                       <FaCircle 
@@ -65,15 +65,15 @@ export default class ExampleCal extends React.Component {
                     </>
                 }
               </li>
-              {dateList.map((date) => (
+              {dateList.map((date, index) => (
                 datesExamples[date].includes(habit.title)
-                  ? <div className='calendar-box'>
+                  ? <div key={index} className='calendar-box'>
                       <button 
                         className='calendar-btn'
                         style={{backgroundColor: habit.color}}>
                       </button>
                     </div>
-                  : <div className='calendar-box'>
+                  : <div key={index} className='calendar-box'>
                       <button 
                         className='calendar-btn'>
                       </button>
