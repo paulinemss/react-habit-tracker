@@ -57,7 +57,10 @@ class App extends React.Component {
       if (x.title !== habit.title) {
         return x; 
       }
+
+      return null;
     })
+
     this.setState({ habits: habitsCopy })
     localStorage.setItem('habits', JSON.stringify(habitsCopy))
   }
